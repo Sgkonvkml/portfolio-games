@@ -8,11 +8,14 @@ body {
 #game-container {
   background-color: ;
   margin-top: 20px;
+  display: flex;
 }
 
 #top-menu {
   width: 405px;
   margin-left: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 #score {
@@ -53,42 +56,46 @@ body {
 }
 
 #game-container-circle {
-  background-color: ;
   border: 5px solid black;
   height: 400px;
   width: 380px;
   margin-left: 25px;
   border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
 }
 
-#top-left {
+#top-left{
   background-color: green;
   border-radius: 100% 0 0 0;
 }
 
-#top-right {
+#top-right{
   background-color: #AA0114;
-  border-top-right-radius: 100%;
+  border-radius: 0 100% 0 0;
 }
 
-#bottom-left {
+#bottom-left{
   background-color: #C69200;
-  border-bottom-left-radius: 100%;
+  border-radius: 0 0 0 100%;
 }
 
-#bottom-right {
+#bottom-right{
   background-color: #172D40;
-  border-bottom-right-radius: 100%;
+  border-radius: 0 0 100% 0;
 }
 
-.section {
+
+.section{
   background-color: grey;
   border: 5px solid black;
   height: 195px;
   width: 185px;
 }
 
-.overlay {
+.overlay{
   background-color: ;
   bottom: 0;
   left: 0;
@@ -103,18 +110,18 @@ body {
 
 /* Phone styles */
 
-@media (max-width: 767px) {
-  #game-container-circle {
+@media (max-width: 767px){
+  #game-container-circle{
     margin-left: 0px;
   }
-  #top-menu {
+  #top-menu{
     width: 405px;
     margin-left: -15px;
   }
-  #restart {
+  #restart{
     margin-left: -10px;
   }
-  .overlay {
+  .overlay{
 
     margin-left: -7px;
   }
