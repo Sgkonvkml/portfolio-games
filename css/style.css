@@ -12,19 +12,10 @@
   height: 75px;
   font-size: 12px;
   padding: 1px;
-
 }
-.strictz {
+
+.strictz, .strictz:hover ,.strictz:active, .strictz:focus{
   background:red;
-  &:hover{
-		background: red;
-  }
-  &:active {
-    background: red;
-  }
-  &:focus {
-    background: red;
-  }
 }
 .btn {
   width:100px;
