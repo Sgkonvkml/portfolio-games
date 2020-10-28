@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 body {
   background-color: #223C38;
   background-size: cover;
@@ -61,7 +63,7 @@ body {
 
 #top-left {
   background-color: green;
-  border-top-left-radius: 100%;
+  border-radius: 100% 0 0 0;
 }
 
 #top-right {
