@@ -27,16 +27,16 @@ button,input{outline: none;}
 }
 
 .btn #a{
-  background:darkorange;
+  background: yellow;
 }
 .btn #b{
-  background: darkgreen;
+  background: green;
 }
 .btn #c{
-  background: darkblue;
+  background: blue;
 }
 .btn #d{
-  background: darkred;
+  background: red;
 }
 
 
