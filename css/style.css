@@ -25,7 +25,22 @@ button,input{outline: none;}
   width:100px;
   height:100px;
 }
-.yellow {
+
+.btn #a{
+  background:darkorange;
+}
+.btn #b{
+  background: darkgreen;
+}
+.btn #c{
+  background: darkblue;
+}
+.btn #d{
+  background: darkred;
+}
+
+
+/* .yellow {
   background:darkorange;
 }
 .green {
@@ -36,4 +51,4 @@ button,input{outline: none;}
 }
 .red {
   background: darkred;
-}
+} */
