@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+#start {
+  border-radius:50%;
+  &:focus {
+    border-radius:50%;
+  }
+}
+#strict {
+  border-radius: 50%;
+  width:75px;
+  height: 75px;
+  font-size: 12px;
+  padding: 1px;
+
+}
+.strictz {
+  background:red;
+  &:hover{
+		background: red;
+  }
+  &:active {
+    background: red;
+  }
+  &:focus {
+    background: red;
+  }
+}
+.btn {
+  width:100px;
+  height:100px;
+}
+.yellow {
+  background:darkorange;
+}
+.green {
+  background: darkgreen;
+}
+.blue {
+  background: darkblue;
+}
+.red {
+  background: darkred;
+}

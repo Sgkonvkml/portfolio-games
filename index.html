@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>split</title>
+    <script type="text/javascript">
+      document.ready(function(){
+
+        var userArr = [];
+        var time = 0;
+        var compArr = [];
+        var mode = 1;
+        var repeat;
+        var strict = false;
+
+
+      $("#start").on("click", function(){
+        starter();
+        newArray();
+        run();
+        won();
+       })
+       $("#strict").on("click", function(){
+         strict = !strict;
+         console.log(strict)
+         $("#strict").toggleClass("strictz")
+       })
+        function won() {
+          if(mode >= 20){
+            alert("Please don't cheat next time! aka you won")
+            lost();
+          }
+        }
+        function lost() {
+          for(var i=0;i<userArr.length;i++){
+          if(userArr[i] !== compArr[i]){
+          strict ? gameover() : easyover();
+            console.log("false")
+          }else {
+           console.log("correct")
+          }
+        }
+      }
+        function easyover() {
+          userArr.length = 0;
+          compArr.length = 0;
+          time = 0;
+
+           $("#loser").text("Easy Game Over")
+        }
+        function gameover() {
+          userArr.length = 0;
+          compArr.length = 0;
+          time = 0;
+          mode = 1;
+          $("#loser").text("Game Over")
+        }
+
+        function starter() {
+
+        time = 0;
+        $("#start").text(mode)
+        $("#text").text("");
+        $("#loser").text("");
+        }
+
+        function newArray() {
+            for(var i=1;i<=mode;i++){
+          var num = Math.floor(Math.random()*4)+1;
+          compArr.push(num);
+          repeat = compArr;
+
+        }
+        console.log(compArr)
+
+        }
+
+        function arraysEqual(arr1, arr2) {
+          if(arr1.length !== arr2.length)
+              return false
+          for(var i = arr1.length; i--;) {
+              if(arr1[i] !== arr2[i])
+                 console.log("cleared")
+                userArr.length = 0;
+                strict ? compArr.length = 0 : compArr.length = 0;
+
+          }
+          mode++
+          userArr.length = 0;
+          compArr.length = 0;
+          //$("#perm").text(mode);
+         $("#text").text("You are on level " + mode + " now!")
+      }
+      $(".b").on("click", function(){
+         if($(this).attr("id") === "a"){
+           userArr.push(1)
+           var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
+           audio.play();
+         }
+          if($(this).attr("id") === "b"){
+           userArr.push(2)
+            var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
+           audio.play();
+         }
+          if($(this).attr("id") === "c"){
+           userArr.push(3)
+            var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
+           audio.play();
+         }
+          if($(this).attr("id") === "d"){
+           userArr.push(4)
+            var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
+           audio.play();
+         }
+        console.log(userArr)
+        arraysEqual(compArr,userArr)
+        lost();
+       })
+
+        function yellow() {
+          var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
+           audio.play();
+           $("#a").toggleClass("yellow")
+            setTimeout(function(){$("#a").toggleClass("yellow")},2000);
+        }
+        function green() {
+           var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
+           audio.play();
+            $("#b").toggleClass("green")
+           setTimeout(function(){$("#b").toggleClass("green")},2000);
+        }
+        function blue() {
+           var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
+           audio.play();
+            $("#c").toggleClass("blue")
+            setTimeout(function(){$("#c").toggleClass("blue")},2000);
+        }
+          function red() {
+            var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
+           audio.play();
+            $("#d").toggleClass("red")
+            setTimeout(function(){$("#d").toggleClass("red")},2000);
+        }
+
+       function run() {
+         $(".b").prop('disabled', true);
+
+         for(var i=0;i<compArr.length;i++){
+        if(compArr[i] === 1){
+            setTimeout(function(){
+            yellow()
+          },time += 2100);
+          console.log(time)
+         }
+         if(compArr[i] === 2){
+            setTimeout(function(){
+            green()
+          },time += 2100);
+         }
+           if(compArr[i] === 3){
+             setTimeout(function(){
+              blue()
+             }, time += 2100);
+             console.log(time)
+           }
+          if(compArr[i] === 4){
+             setTimeout(function(){
+              red()
+             }, time += 2100);
+           }
+        }
+         setTimeout(function(){
+             $(".b").prop('disabled', false);
+          }, time + 2000)
+       }
+
+
+
+      });
+
+
+
+    </script>
+    <body>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <button class="btn btn-warning b" id="a"></button>
+            <button class="btn btn-success b" id="b"></button>
+            <button class="btn btn-primary b" id="c"></button>
+            <button class="btn btn-danger b" id="d"></button><br>
+            <button class="btn btn-default" id="start">Start</button>
+            <button class="btn btn-default" id="strict">Hard Mode</button>
+            <h1 id="text">Click "Start" to play!</h1>
+            <h2 id="loser"></h2>
+            <h2 id="perm"></h2>
+          </div>
+        </div>
+    </body>
