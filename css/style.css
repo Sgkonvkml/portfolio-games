@@ -1,54 +1,119 @@
-@charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-*{ margin: 0; padding: 0; }
-html,body{ height: 100%; font-family: 'Luckiest Guy', cursive;}
-ul,ol,li{ list-style: none;}
-button,input{outline: none;}
-
-#start, #start:focus{
-  border-radius:50%;
+body {
+  background-color: #223C38;
+  background-size: cover;
 }
 
-#strict{
-  border-radius: 50%;
-  width:75px;
-  height: 75px;
-  font-size: 12px;
-  padding: 1px;
+#game-container {
+  background-color: ;
+  margin-top: 20px;
 }
 
-.strictz, .strictz:hover ,.strictz:active, .strictz:focus{
-  background:red;
-}
-.btn {
-  width:100px;
-  height:100px;
+#top-menu {
+  width: 405px;
+  margin-left: 10px;
 }
 
-.btn #a{
-  background: yellow;
+#score {
+  background: #3D2C16;
+  border: 5px solid black;
+  margin: 0px 1px 0px 1px;
+  height: 45px;
+  width: 158px;
+  color: #8BC34A;
 }
-.btn #b{
-  background: green;
+
+#start {
+  background-color: lightgreen;
+  border: 5px solid black;
+  margin: 0px 1px 0px 1px;
+  height: 45px;
+  width: 120px;
+  font-size: 1.7em;
 }
-.btn #c{
-  background: blue;
+
+#strict {
+  background-color: #EE6658;
+  border: 5px solid black;
+  margin: 0px 1px 0px 1px;
+  height: 45px;
+  width: 120px;
+  font-size: 1.7em;
 }
-.btn #d{
-  background: red;
+
+#restart {
+  font-size: 1.7em;
+  background-color: lightblue;
+  border: 5px solid black;
+  margin-top: 20px;
+  margin-left: 50px;
+  height: 45px;
+  width: 120px;
+}
+
+#game-container-circle {
+  background-color: ;
+  border: 5px solid black;
+  height: 400px;
+  width: 380px;
+  margin-left: 25px;
+  border-radius: 100%;
+}
+
+#top-left {
+  background-color: green;
+  border-top-left-radius: 100%;
+}
+
+#top-right {
+  background-color: #AA0114;
+  border-top-right-radius: 100%;
+}
+
+#bottom-left {
+  background-color: #C69200;
+  border-bottom-left-radius: 100%;
+}
+
+#bottom-right {
+  background-color: #172D40;
+  border-bottom-right-radius: 100%;
+}
+
+.section {
+  background-color: grey;
+  border: 5px solid black;
+  height: 195px;
+  width: 185px;
+}
+
+.overlay {
+  background-color: ;
+  bottom: 0;
+  left: 0;
+  position: relative;
+  right: 0;
+  top: 0;
+  z-index: -1;
+  width: 430px;
+  height: 400px;
 }
 
 
-/* .yellow {
-  background:darkorange;
+/* Phone styles */
+
+@media (max-width: 767px) {
+  #game-container-circle {
+    margin-left: 0px;
+  }
+  #top-menu {
+    width: 405px;
+    margin-left: -15px;
+  }
+  #restart {
+    margin-left: -10px;
+  }
+  .overlay {
+
+    margin-left: -7px;
+  }
 }
-.green {
-  background: darkgreen;
-}
-.blue {
-  background: darkblue;
-}
-.red {
-  background: darkred;
-} */

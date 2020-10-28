@@ -4,190 +4,242 @@
     <meta charset="UTF-8">
     <title>split</title>
     <link rel="stylesheet" href="css/style.css">
-    <script>
-      document.ready(function(){
-
-        var userArr = []; //user array
-        var time = 0;
-        var compArr = []; //computer array
-        var mode = 1; //level
-        var repeat;
-        var strict = false;
-
-      $("#start").on("click", function(){
-        starter();
-        newArray();
-        run();
-        won();
-       })
-       $("#strict").on("click", function(){
-         strict = !strict;
-         console.log(strict)
-         $("#strict").toggleClass("strictz")
-       })
-        function won(){
-          if(mode >= 20){
-            alert("Please don't cheat next time! aka you won")
-            lost();
-          }
-        }
-        function lost() {
-          for(var i=0;i<userArr.length;i++){
-          if(userArr[i] !== compArr[i]){
-          strict ? gameover() : easyover();
-            console.log("false")
-          }else {
-           console.log("correct")
-          }
-        }
-      }
-        function easyover() {
-          userArr.length = 0;
-          compArr.length = 0;
-          time = 0;
-
-           $("#loser").text("Easy Game Over")
-        }
-        function gameover() {
-          userArr.length = 0;
-          compArr.length = 0;
-          time = 0;
-          mode = 1;
-          $("#loser").text("Game Over")
-        }
-
-        function starter() {
-
-        time = 0;
-        $("#start").text(mode)
-        $("#text").text("");
-        $("#loser").text("");
-        }
-
-        function newArray() {
-            for(var i=1;i<=mode;i++){
-          var num = Math.floor(Math.random()*4)+1;
-          compArr.push(num);
-          repeat = compArr;
-
-        }
-        console.log(compArr)
-
-        }
-
-        function arraysEqual(arr1, arr2) {
-          if(arr1.length !== arr2.length)
-              return false
-          for(var i = arr1.length; i--;) {
-              if(arr1[i] !== arr2[i])
-                 console.log("cleared")
-                userArr.length = 0;
-                strict ? compArr.length = 0 : compArr.length = 0;
-
-          }
-          mode++
-          userArr.length = 0;
-          compArr.length = 0;
-          //$("#perm").text(mode);
-         $("#text").text("You are on level " + mode + " now!")
-      }
-      $(".b").on("click", function(){
-         if($(this).attr("id") === "a"){
-           userArr.push(1)
-           var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
-           audio.play();
-         }
-          if($(this).attr("id") === "b"){
-           userArr.push(2)
-            var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
-           audio.play();
-         }
-          if($(this).attr("id") === "c"){
-           userArr.push(3)
-            var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
-           audio.play();
-         }
-          if($(this).attr("id") === "d"){
-           userArr.push(4)
-            var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
-           audio.play();
-         }
-        console.log(userArr)
-        arraysEqual(compArr,userArr)
-        lost();
-       })
-
-        function yellow() {
-          var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
-           audio.play();
-           $("#a").toggleClass("yellow")
-            setTimeout(function(){$("#a").toggleClass("yellow")},2000);
-        }
-        function green() {
-           var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
-           audio.play();
-            $("#b").toggleClass("green")
-           setTimeout(function(){$("#b").toggleClass("green")},2000);
-        }
-        function blue() {
-           var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
-           audio.play();
-            $("#c").toggleClass("blue")
-            setTimeout(function(){$("#c").toggleClass("blue")},2000);
-        }
-          function red() {
-            var audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
-           audio.play();
-            $("#d").toggleClass("red")
-            setTimeout(function(){$("#d").toggleClass("red")},2000);
-        }
-
-       function run() {
-         $(".b").prop('disabled', true);
-
-         for(var i=0;i<compArr.length;i++){
-        if(compArr[i] === 1){
-            setTimeout(function(){
-            yellow()
-          },time += 2100);
-          console.log(time)
-         }
-         if(compArr[i] === 2){
-            setTimeout(function(){
-            green()
-          },time += 2100);
-         }
-           if(compArr[i] === 3){
-             setTimeout(function(){
-              blue()
-             }, time += 2100);
-             console.log(time)
-           }
-          if(compArr[i] === 4){
-             setTimeout(function(){
-              red()
-             }, time += 2100);
-           }
-        }
-         setTimeout(function(){
-             $(".b").prop('disabled', false);
-          }, time + 2000)
-       }
-    });
-    </script>
-    <body>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <button class="btn btn-warning b" id="a"></button>
-            <button class="btn btn-success b" id="b"></button>
-            <button class="btn btn-primary b" id="c"></button>
-            <button class="btn btn-danger b" id="d"></button><br>
-            <button class="btn btn-default" id="start" onclick="ready()">Start</button>
-            <button class="btn btn-default" id="strict">Hard Mode</button>
-            <h1 id="text">Click "Start" to play!</h1>
-            <h2 id="loser"></h2>
-            <h2 id="perm"></h2>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div id="game-container" class="col-md-offset-4 col-xs-4 text-center">
+          <div id="top-menu">
+            <div id="start" class="pull-left">
+              Easy
+            </div>
+            <div id="score" class="pull-left">
+              <h4 id="score-holder">0</h4>
+            </div>
+            <div id="strict" class="pull-left">
+              Strict
+            </div>
+            <div class="clearfix"></div><br />
+          </div>
+          <div id="overlay-container" class="overlay">
+            <div id="game-container-circle" class="">
+              <div id="top-left" data-num="1" class="section pull-left">
+              </div>
+              <div id="top-right" data-num="2" class="section pull-right">
+              </div>
+              <div id="bottom-left" data-num="3" class="section pull-left">
+              </div>
+              <div id="bottom-right" data-num="4" class="section pull-right">
+              </div>
+            </div>
           </div>
         </div>
-    </body>
+      </div>
+      <div class="col-xs-offset-4 col-sm-offset-2 col-md-offset-5 col-xs-4 text-center">
+        <div id="restart">
+          Restart
+        </div>
+      </div>
+    </div>
+      <script type="text/jscript">
+      $(document).ready(function(){
+        //start
+        //variables
+        var sequenceArr = [];
+        var userClicks = [];
+        var userClicksCopy = [];
+        var sequenceCount = 0;
+        var correct = true;
+        var strict = false;
+        var easyGame = false;
+        var score = 0;
+        var easyGameCount = 0;
+        var randomLight = "";
+        var green = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
+        var red = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
+        var yellow = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
+        var blue = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
+        //functions
+        var generateLight = function(){
+          randomLight = 'data-num = ' + '"' + (Math.floor(Math.random() * 4) + 1) + '"';
+          sequenceArr.push(randomLight);
+          sequenceCount++;
+        }
+        var lightUp = function(randomLight) {
+          switch (randomLight) {
+            //if green
+            case 'data-num = "1"':
+              $("div[" + randomLight + "]").css("background-color", "#66FF00");
+              green.play();
+              setTimeout(function() {
+                $("div[" + randomLight + "]").css("background-color", "#008000");
+              }, 500);
+              break;
+              //if red
+            case 'data-num = "2"':
+              $("div[" + randomLight + "]").css("background-color", "red");
+              red.play();
+              setTimeout(function() {
+                $("div[" + randomLight + "]").css("background-color", "#AA0114");
+              }, 500);
+              break;
+              //if yellow
+            case 'data-num = "3"':
+              $("div[" + randomLight + "]").css("background-color", "#FFFF00");
+              yellow.play();
+              setTimeout(function() {
+                $("div[" + randomLight + "]").css("background-color", "#C69200");
+              }, 500);
+              break;
+              //if blue
+            case 'data-num = "4"':
+              $("div[" + randomLight + "]").css("background-color", "blue");
+              blue.play();
+              setTimeout(function() {
+                $("div[" + randomLight + "]").css("background-color", "#172D40");
+              }, 500);
+              break;
+            default:
+              ;
+
+          }
+        }
+        var restart = function() {
+          sequenceArr = [];
+          userClicks = [];
+          userClicksCopy = [];
+          sequenceCount = 0;
+          correct = true;
+          strict = false;
+          easyGame = false;
+          score = 0;
+          easyGameCount = 0;
+          randomLight = "";
+          document.getElementById("score-holder").innerText = score;
+          $("#overlay-container").addClass("overlay");
+        }
+        var checkGame = function() {
+
+          for (var k = 0; k < userClicks.length; k++) {
+            if (sequenceArr[k] != userClicks[k]) {
+              //easyGame settings
+              if (easyGame) {
+                easyGameCount++;
+                if (easyGameCount == 1) {
+                  userClicks = [];
+                  document.getElementById("score-holder").innerText = "Try Again!";
+                  setTimeout(function() {
+                    displaySequence();
+                  }, 500);
+                } else if (easyGameCount == 2) {
+                  document.getElementById("score-holder").innerText = "You lost!";
+                  setTimeout(function() {
+                    restart();
+                    easyGame = true;
+
+                  }, 500);
+                  setTimeout(function() {
+                    startSequence();
+                  }, 900);
+                  correct = false;
+                }
+              }
+
+              if (strict) {
+                //strict settings
+                document.getElementById("score-holder").innerText = "You lost!";
+                setTimeout(function() {
+                  restart();
+                  strict = true;
+                  startSequence();
+                }, 500);
+
+                correct = false;
+              }
+            }
+          }
+          //easy game rules
+
+        }
+        var displaySequence = function() {
+          $("#overlay-container").addClass("overlay");
+          //display then add
+          var i = 0;
+          var interval = setInterval(function() {
+            lightUp(sequenceArr[i]);
+            i++;
+            if (i >= sequenceArr.length) {
+              clearInterval(interval);
+              $("#overlay-container").removeClass("overlay");
+            }
+          }, 1000);
+
+        }
+        var startSequence = function() {
+          document.getElementById("score-holder").innerText = score;
+          generateLight();
+          displaySequence();
+          $('#top-left, #top-right, #bottom-left, #bottom-right').click(function(e) {
+            var idClicked = e.target.id;
+            switch (idClicked) {
+              case "top-left":
+                userClicks.push('data-num = "1"');
+                lightUp('data-num = "1"');
+                break;
+              case "top-right":
+                userClicks.push('data-num = "2"');
+                lightUp('data-num = "2"');
+                break;
+              case "bottom-left":
+                userClicks.push('data-num = "3"');
+                lightUp('data-num = "3"');
+                break;
+              case "bottom-right":
+                userClicks.push('data-num = "4"');
+                lightUp('data-num = "4"');
+                break;
+              default:
+            }
+            e.stopImmediatePropagation();
+            checkGame();
+            if (sequenceCount == 20) {
+              document.getElementById("score-holder").innerText = "You Won!";
+              setTimeout(function() {
+                restart();
+                document.getElementById("score-holder").innerText = "Click a Mode!";
+              }, 500);
+            }
+            if (userClicks.length == sequenceCount) {
+              //checkGame();
+              if (correct) {
+                userClicks = [];
+                score++;
+                document.getElementById("score-holder").innerText = "Next Round!";
+                setTimeout(function() {
+                  startSequence();
+                }, 500);
+              }
+            }
+          });
+        }
+        //events
+        $("#strict, #start").on("click", function(e) {
+          var startOrStrict = e.target.id;
+          if (startOrStrict == "start") {
+            easyGame = true;
+          } else {
+            strict = true;
+          }
+          $("#overlay-container").removeClass("overlay");
+          startSequence();
+          correct = true;
+        });
+        //restart events
+        $("#restart").on("click", function() {
+          restart();
+        });
+        //end of document ready
+        });
+      </script>
+  </body>
+</html>
