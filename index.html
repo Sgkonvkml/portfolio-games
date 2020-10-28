@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <title>split</title>
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript">
-      document.readyfunction(){
+    <script>
+      document.ready(function(){
 
-        var userArr = [];
+        var userArr = []; //user array
         var time = 0;
-        var compArr = [];
-        var mode = 1;
+        var compArr = []; //computer array
+        var mode = 1; //level
         var repeat;
         var strict = false;
-
 
       $("#start").on("click", function(){
         starter();
@@ -26,7 +25,7 @@
          console.log(strict)
          $("#strict").toggleClass("strictz")
        })
-        function won() {
+        function won(){
           if(mode >= 20){
             alert("Please don't cheat next time! aka you won")
             lost();
@@ -174,8 +173,7 @@
              $(".b").prop('disabled', false);
           }, time + 2000)
        }
-      };
-    };
+    });
     </script>
     <body>
       <div class="container">
@@ -185,7 +183,7 @@
             <button class="btn btn-success b" id="b"></button>
             <button class="btn btn-primary b" id="c"></button>
             <button class="btn btn-danger b" id="d"></button><br>
-            <button class="btn btn-default" id="start">Start</button>
+            <button class="btn btn-default" id="start" onclick="ready()">Start</button>
             <button class="btn btn-default" id="strict">Hard Mode</button>
             <h1 id="text">Click "Start" to play!</h1>
             <h2 id="loser"></h2>
