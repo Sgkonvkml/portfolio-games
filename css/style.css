@@ -1,24 +1,23 @@
 @charset "UTF-8";
 
 body {
-  background-color: #223C38;
+  background-color: #ff2244;
   background-size: cover;
 }
 
 #game-container {
-  background-color: ;
+  position: relative;
   margin-top: 20px;
-  display: flex;
 }
 
 #top-menu {
+  position: relative;
   width: 405px;
-  margin-left: 10px;
-  display: flex;
-  justify-content: center;
+  float: left;
 }
 
 #score {
+  display: inline-block;
   background: #3D2C16;
   border: 5px solid black;
   margin: 0px 1px 0px 1px;
@@ -28,6 +27,7 @@ body {
 }
 
 #start {
+  display: inline-block;
   background-color: lightgreen;
   border: 5px solid black;
   margin: 0px 1px 0px 1px;
@@ -37,6 +37,8 @@ body {
 }
 
 #strict {
+  position: absolute;
+  display: inline-block;
   background-color: #EE6658;
   border: 5px solid black;
   margin: 0px 1px 0px 1px;
@@ -56,46 +58,42 @@ body {
 }
 
 #game-container-circle {
+  background-color: ;
   border: 5px solid black;
   height: 400px;
   width: 380px;
   margin-left: 25px;
   border-radius: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
 }
 
-#top-left{
+#top-left {
   background-color: green;
-  border-radius: 100% 0 0 0;
+  border-top-left-radius: 100%;
 }
 
-#top-right{
+#top-right {
   background-color: #AA0114;
-  border-radius: 0 100% 0 0;
+  border-top-right-radius: 100%;
 }
 
-#bottom-left{
+#bottom-left {
   background-color: #C69200;
-  border-radius: 0 0 0 100%;
+  border-bottom-left-radius: 100%;
 }
 
-#bottom-right{
+#bottom-right {
   background-color: #172D40;
-  border-radius: 0 0 100% 0;
+  border-bottom-right-radius: 100%;
 }
 
-
-.section{
+.section {
   background-color: grey;
   border: 5px solid black;
   height: 195px;
   width: 185px;
 }
 
-.overlay{
+.overlay {
   background-color: ;
   bottom: 0;
   left: 0;
@@ -110,18 +108,18 @@ body {
 
 /* Phone styles */
 
-@media (max-width: 767px){
-  #game-container-circle{
+@media (max-width: 767px) {
+  #game-container-circle {
     margin-left: 0px;
   }
-  #top-menu{
+  #top-menu {
     width: 405px;
     margin-left: -15px;
   }
-  #restart{
+  #restart {
     margin-left: -10px;
   }
-  .overlay{
+  .overlay {
 
     margin-left: -7px;
   }
